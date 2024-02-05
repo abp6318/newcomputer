@@ -1,0 +1,19 @@
+calcite-block-section {
+    padding-bottom: 1rem;
+}
+
+calcite-select {
+    /* min-width: 150px; */
+    min-width: 10rem;
+}
+
+#my-pre-block {
+    height: 100%;
+}
+
+pre[class*="language-" ],
+code[class*="language-"] {
+    white-space: pre-line;
+    overflow: auto;
+    word-break: break-word;
+}

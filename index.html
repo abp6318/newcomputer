@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="https://js.arcgis.com/calcite-components/2.4.0/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.4.0/calcite.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.css">
+    <link rel="stylesheet" type="text/css" href="./index.css" />
+</head>
+<body>
+    <calcite-shell>
+        <!-- Left pane / chip groups and input -->
+        <calcite-block open heading="Quick onboarding and setup for developers" description="Copy to clipboard or download as a script">  
+            
+            <calcite-block-section open id="os" text="Operating System" status="idle">
+                <!-- Operating system selection -->
+                <!-- changes CLI installation command -->
+                <calcite-chip-group label="operating-system-group-label" selection-mode="single-persist">
+                    <calcite-chip selected value="MacOS">MacOS</calcite-chip>
+                    <calcite-chip value="Windows">Windows</calcite-chip>
+                    <calcite-chip value="Linux">Linux</calcite-chip>
+                </calcite-chip-group>
+            </calcite-block-section>
+
+            <calcite-block-section open id="method" text="Method of Installation" status="idle">
+                <!-- Installation method -->
+                <!-- changes CLI installation command -->
+                <calcite-chip-group label="installation-tool-group-label" selection-mode="single-persist">
+                    <calcite-chip selected value="Curl">Curl</calcite-chip>
+                    <calcite-chip value="NPM">NPM</calcite-chip>
+                    <calcite-chip value="Yarn">Yarn</calcite-chip>
+                    <calcite-chip value="Brew">Brew</calcite-chip>
+                </calcite-chip-group>
+            </calcite-block-section>
+
+            <calcite-block-section open text="Tool to Install" status="idle">
+                <!-- Tool to install -->
+                <!-- 
+                    table of tools (is searchable)
+                    - name of tool
+                    - link to documentation of tool
+                    - version
+                    - CLI installation command
+                    - button to copy single line installation command
+                    - button to add single line to script list
+                -->
+
+                <calcite-table id="install-table" caption="Table of tools to install" striped selection-mode="multiple" page-size="6" bordered>
+                    <!-- Actions -->
+                    <calcite-action-bar slot="selection-actions" layout="horizontal" expand-disabled>
+                        <calcite-action id="copy-tooltip" text="Copy to Clipboard" icon="copy" text-enabled></calcite-action>
+                        <calcite-tooltip reference-element="copy-tooltip">
+                            <span>Copies <i>all</i> selected commands to clipboard as a single string</span>
+                        </calcite-tooltip>
+
+                        <calcite-action id="script-tooltip" text="Add to Script" icon="file-code"></calcite-action>
+                        <calcite-tooltip reference-element="script-tooltip">
+                            <span>Adds <i>all</i> selected commands to downloadable script</span>
+                        </calcite-tooltip>
+
+                        <calcite-action id="download-tooltip" text="Download Script" icon="download-to"></calcite-action>
+                        <calcite-tooltip reference-element="download-tooltip">
+                            <span>Download script</span>
+                        </calcite-tooltip>
+                    </calcite-action-bar>
+
+                    <!-- Table headers -->
+                    <calcite-table-row slot="table-header">
+                        <calcite-table-header heading="Tool"></calcite-table-header>
+                        <calcite-table-header heading="Documentation" style="width:100px"></calcite-table-header>
+                        <calcite-table-header heading="Version"></calcite-table-header>
+                        <calcite-table-header heading="CLI Installation"></calcite-table-header>
+                    </calcite-table-row>
+                    
+                    <!-- Dynamically add content here -->
+                </calcite-table>
+            </calcite-block-section>
+        </calcite-block>
+
+        <!-- Right pane / script -->
+        <calcite-shell-panel slot="panel-end" position="end" id="shell-panel-end" width-scale="l" resizable>
+            <pre contenteditable id="my-pre-block" class="line-numbers">
+                <code id="my-code-block" class="language-css"># Click the file button above the table to copy over your code, or the download button to download the file.</code>
+                <code id="my-code-block" class="language-css"># Downloaded file will default to `.sh` ending.</code>
+            </pre>
+        </calcite-shell-panel>
+    </calcite-shell>
+
+    <!-- main script; needs to be run after everything else has a chance to load in -->
+    <script src="./index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js" integrity="sha512-UOoJElONeUNzQbbKQbjldDf9MwOHqxNz49NNJJ1d90yp+X9edsHyJoAs6O4K19CZGaIdjI5ohK+O2y5lBTW6uQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</body>
+</html>
